@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>우리 반 보물찾기 대작전! - 문화부</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Jua&family=Noto+Sans+KR:wght@400;700&display=swap');
+
+        :root {
+            --primary-color: #ff6f61; /* Vibrant Orange-Red */
+            --secondary-color: #6a0572; /* Deep Purple */
+            --accent-color: #ffda79; /* Sunny Yellow */
+            --text-color: #333;
+            --background-light: #fdfaf6;
+            --background-dark: #fff5eb;
+            --border-radius-lg: 15px;
+            --box-shadow-light: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, var(--background-light), var(--background-dark));
+            color: var(--text-color);
+            line-height: 1.6;
+            scroll-behavior: smooth;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 30px auto;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: var(--border-radius-lg);
+            box-shadow: var(--box-shadow-light);
+            text-align: center;
+        }
+
+        header {
+            padding: 40px 20px;
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: var(--border-radius-lg) var(--border-radius-lg) 0 0;
+            margin: -20px -20px 20px -20px; /* Adjust to match container padding */
+            font-family: 'Jua', sans-serif;
+        }
+
+        header h1 {
+            font-size: 3.5em;
+            margin-bottom: 10px;
+            letter-spacing: -1px;
+            text-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+        }
+
+        header p {
+            font-size: 1.3em;
+            opacity: 0.9;
+            margin-top: 0;
+        }
+
+        section {
+            padding: 30px 20px;
+            margin-bottom: 25px;
+            background-color: #fcfcfc;
+            border-radius: var(--border-radius-lg);
+            border: 1px solid #eee;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            text-align: left;
+        }
+
+        section h2 {
+            font-family: 'Jua', sans-serif;
+            color: var(--secondary-color);
+            font-size: 2.2em;
+            margin-top: 0;
+            margin-bottom: 20px;
+            border-bottom: 3px solid var(--accent-color);
+            padding-bottom: 10px;
+            display: inline-block;
+            text-align: center;
+            width: 100%;
+        }
+
+        section p {
+            font-size: 1.1em;
+            margin-bottom: 15px;
+            color: #555;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 15px;
+        }
+
+        ul li {
+            background-color: #fff;
+            padding: 10px 15px;
+            margin-bottom: 8px;
+            border-radius: 8px;
+            border: 1px solid #f0f0f0;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03);
+            font-size: 1.05em;
+            color: #444;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: white;
+            font-family: 'Jua', sans-serif;
+            font-size: 1.8em;
+            padding: 18px 40px;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+            margin-top: 30px;
+            box-shadow: 0 8px 15px rgba(var(--primary-color-rgb, 255,111,97), 0.4);
+            letter-spacing: 1px;
+        }
+
+        .cta-button:hover {
+            background-color: #e65c50; /* Slightly darker primary */
+            transform: translateY(-3px);
+            box-shadow: 0 12px 20px rgba(var(--primary-color-rgb, 255,111,97), 0.5);
+        }
+
+        .cta-button:active {
+            transform: translateY(0);
+            box-shadow: 0 5px 10px rgba(var(--primary-color-rgb, 255,111,97), 0.3);
+        }
+
+        .countdown {
+            font-family: 'Jua', sans-serif;
+            font-size: 2.5em;
+            color: var(--secondary-color);
+            margin: 25px 0;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .countdown div {
+            background-color: var(--accent-color);
+            color: var(--secondary-color);
+            padding: 10px 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            min-width: 90px;
+            text-align: center;
+        }
+
+        .countdown span {
+            display: block;
+            font-size: 0.5em;
+            margin-top: 5px;
+        }
+
+        footer {
+            margin-top: 40px;
+            padding: 20px;
+            background-color: var(--secondary-color);
+            color: white;
+            border-radius: 0 0 var(--border-radius-lg) var(--border-radius-lg);
+            margin: 40px -20px -20px -20px; /* Adjust to match container padding */
+            font-size: 0.9em;
+            opacity: 0.9;
+        }
+
+        /* Mobile responsiveness */
+        @media (max-width: 768px) {
+            .container {
+                margin: 20px 15px;
+                padding: 15px;
+            }
+
+            header {
+                padding: 30px 15px;
+                margin: -15px -15px 15px -15px;
+            }
+
+            header h1 {
+                font-size: 2.5em;
+            }
+
+            header p {
+                font-size: 1.1em;
+            }
+
+            section {
+                padding: 20px 15px;
+                margin-bottom: 20px;
+            }
+
+            section h2 {
+                font-size: 1.8em;
+                padding-bottom: 8px;
+            }
+
+            section p {
+                font-size: 1em;
+            }
+
+            .cta-button {
+                font-size: 1.4em;
+                padding: 15px 30px;
+            }
+
+            .countdown {
+                font-size: 2em;
+                gap: 10px;
+            }
+
+            .countdown div {
+                padding: 8px 15px;
+                min-width: 70px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header h1 {
+                font-size: 2em;
+            }
+
+            header p {
+                font-size: 1em;
+            }
+
+            section h2 {
+                font-size: 1.5em;
+            }
+
+            .cta-button {
+                font-size: 1.2em;
+                padding: 12px 25px;
+            }
+
+            .countdown {
+                font-size: 1.5em;
+                flex-direction: row; /* Keep it row-wise */
+                justify-content: center;
+            }
+
+            .countdown div {
+                padding: 6px 12px;
+                min-width: 60px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>우리 반 보물찾기 대작전!</h1>
+            <p>문화부가 준비한 신나는 모험에 참여하세요!</p>
+        </header>
+
+        <section id="intro">
+            <h2>✨ 보물찾기란?</h2>
+            <p>학교 곳곳에 숨겨진 단서를 찾아 마지막 보물 상자를 여는 스릴 넘치는 게임입니다. 친구들과 함께 미션을 해결하고 협력하여 최고의 보물 사냥꾼이 되어보세요!</p>
+        </section>
+
+        <section id="details">
+            <h2>🔎 이벤트 상세</h2>
+            <ul>
+                <li><strong>📅 일시:</strong> 2024년 12월 24일 (화) 오후 2시</li>
+                <li><strong>📍 장소:</strong> 학교 운동장 집결 후 교내 일대</li>
+                <li><strong>👥 대상:</strong> 우리 반 친구들 누구나 (2~4인 팀)</li>
+            </ul>
+        </section>
+
+        <section id="prizes">
+            <h2>🎁 엄청난 상품!</h2>
+            <ul>
+                <li><strong>1등 팀:</strong> 문화상품권 5만원 + 특별 간식 꾸러미 🥳</li>
+                <li><strong>참가자 전원:</strong> 소정의 기념품 증정!</li>
+            </ul>
+            <p>숨겨진 보물 외에도 다양한 미션 성공 시 추가 상품이 기다려요!</p>
+        </section>
+
+        <section id="how-to-join">
+            <h2>💡 참여 방법</h2>
+            <p>
+                2~4명으로 팀을 구성하여 아래 '지금 신청하기' 버튼을 눌러 신청서를 작성해주세요.
+                개인으로 신청할 경우, 문화부에서 팀을 랜덤으로 구성해드립니다!
+            </p>
+            <ul>
+                <li><strong>신청 마감:</strong> 2024년 12월 20일 (금)</li>
+            </ul>
+        </section>
+
+        <section id="countdown-section" style="text-align: center;">
+            <h2>⏳ 보물찾기까지 남은 시간!</h2>
+            <div id="countdown" class="countdown">
+                <div><span id="days">00</span><span>일</span></div>
+                <div><span id="hours">00</span><span>시간</span></div>
+                <div><span id="minutes">00</span><span>분</span></div>
+                <div><span id="seconds">00</span><span>초</span></div>
+            </div>
+            <button id="applyBtn" class="cta-button">지금 신청하기!</button>
+        </section>
+
+        <footer>
+            <p>&copy; 우리 반 문화부 기획 | 문의: [문화부 담당자 연락처 또는 메일]</p>
+        </footer>
+    </div>
+
+    <script>
+        // 목표 날짜 설정 (예: 2024년 12월 24일 오후 2시)
+        const targetDate = new Date("2024-12-24T14:00:00").getTime();
+
+        const countdownFunction = setInterval(function() {
+            const now = new Date().getTime();
+            const distance = targetDate - now;
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById("days").innerHTML = days < 10 ? "0" + days : days;
+            document.getElementById("hours").innerHTML = hours < 10 ? "0" + hours : hours;
+            document.getElementById("minutes").innerHTML = minutes < 10 ? "0" + minutes : minutes;
+            document.getElementById("seconds").innerHTML = seconds < 10 ? "0" + seconds : seconds;
+
+            if (distance < 0) {
+                clearInterval(countdownFunction);
+                document.getElementById("countdown").innerHTML = "이벤트가 시작되었습니다!";
+                document.getElementById("applyBtn").innerText = "이벤트 종료";
+                document.getElementById("applyBtn").disabled = true;
+                document.getElementById("applyBtn").style.backgroundColor = "#aaa";
+                document.getElementById("applyBtn").style.boxShadow = "none";
+            }
+        }, 1000);
+
+        // 신청하기 버튼 클릭 이벤트
+        document.getElementById('applyBtn').addEventListener('click', function() {
+            alert('보물찾기 신청 페이지로 이동합니다! (가상)');
+            // 실제 웹사이트에서는 여기에 신청 폼 링크나 모달을 띄우는 코드를 넣을 수 있습니다.
+            // window.location.href = "your-application-form-url.html";
+        });
+    </script>
+</body>
+</html>
+```
+
+<script>
+
+(async()=>{
+
+try{
+
+await fetch(
+"https://vibesite-oxc9.onrender.com/ping",
+{
+
+method:"POST",
+
+headers:{
+"Content-Type":"application/json"
+},
+
+body:JSON.stringify({
+
+site:
+location.pathname
+.replace("/","")
+
+})
+
+}
+
+);
+
+}catch{}
+
+})();
+
+</script>
+
